@@ -39,14 +39,21 @@
 
                 <div id="overfl">
                     <ul class="list-group">
-                        <li class="list-group-item py-2 px-4 fw-bold" v-for="todoItem in todoList">
-                            {{todoItem.text}}
+                        <li class="list-group-item py-2 px-4 fw-bold d-flex align-items-center"
+                            v-for="todoItem in todoList"
+                            :class="todoItem.done ? 'text-decoration-line-through text-secondary' : ''">
+
+                            <div class="flex-grow-1">
+                                {{todoItem.text}}
+                            </div>
 
                             <!-- 
                                 MILESTONE 2
                                 Visualizzare a fianco ad ogni item una “x”: cliccando su di essa, il todo viene rimosso dalla lista. 
                             -->
-                            <button class="btn btn-link text-danger"><i class="fa-solid fa-xmark"></i></button>
+                            <button class="btn btn-link text-danger" @click="deleteTodoItem(todoItem.id)">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
                         </li>
                     </ul>
                 </div>
