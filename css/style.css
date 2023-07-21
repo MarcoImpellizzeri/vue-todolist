@@ -7,12 +7,25 @@ body {
     height: 100vh;
 }
 
+li {
+    overflow: auto;
+}
+
 .container {
     position: relative;
     top: 200px;
 }
 
 #overfl {
-    max-height: 500px;
+    max-height: 330px;
     overflow: auto;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #000000;
+}
+
+#opacity {
+    background-color: rgba(129, 129, 129, 0.308);
 }

@@ -20,19 +20,36 @@
 
 <body>
     <div id="app">
-        <div class="container p-5">
-            <h1 class="text-uppercase fw-bold text-center mb-5">To do list</h1>
+        <div class="container p-4">
+            <div id="opacity" class="p-3 rounded-4">
+                <h1 class="text-uppercase text-center mb-3">To do list</h1>
 
-            <div class="input-group mb-3">
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
-                <input type="text" class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
-            </div>
+                <div class="input-group mb-3">
+                    <!-- 
+                        Bonus 1: oltre al click sul pulsante, intercettare anche il tasto ENTER 
+                        per aggiungere il todo alla lista.
 
-            <div id="overfl">
-                <ul class="list-group">
-                    <li class="list-group-item py-2 px-4">Ciao</li>
-                </ul>
+                        Uso @keyup.enter="addTodoItem" per aggiungere il todo alla lista.
+                    -->
+                    <input type="text" class="form-control fw-bold" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-default" placeholder="Cose da fare..."
+                        v-model="newTodoItem.text" @keyup.enter="addTodoItem">
+                    <button class="btn btn-primary" @click="addTodoItem()"><i class="fa-solid fa-plus"></i></button>
+                </div>
+
+                <div id="overfl">
+                    <ul class="list-group">
+                        <li class="list-group-item py-2 px-4 fw-bold" v-for="todoItem in todoList">
+                            {{todoItem.text}}
+
+                            <!-- 
+                                MILESTONE 2
+                                Visualizzare a fianco ad ogni item una “x”: cliccando su di essa, il todo viene rimosso dalla lista. 
+                            -->
+                            <button class="btn btn-link text-danger"><i class="fa-solid fa-xmark"></i></button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
